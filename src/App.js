@@ -91,37 +91,6 @@ export class App extends Component {
           return true;
       }
   }
-  update=()=>{   
-      let month = parseInt(this.state.month)
-      let date = parseInt(this.state.date)
-      let year = parseInt(this.state.year)
-
-      if (month !== undefined) {      
-          this.setState({dates:[]})
-          if (month === 2) {
-              if (year !== undefined) {
-                  if (this.isLeapYear(year)) {
-                      this.addDate(29)
-                  } else {
-                      this.addDate(28)
-                  }
-                  if (date <= 28) {
-                      this.setState({date:date})
-                  }
-              }
-          } else if (month === 4 || month === 6 || month === 8 || month === 11) {
-              if (date === 31) {
-                  this.addDate(30)
-              } else {
-                  this.addDate(30)
-                  this.setState({date:date})
-              }
-          } else {
-              this.addDate(31)
-              this.setState({date:date})
-          }
-      }
-  }
 
   handleNextClick=(e)=>{
       this.setState({success:false,error:false})
@@ -153,7 +122,7 @@ export class App extends Component {
           <p>Chooose your date of birth. You can always make this private later.</p>
           <div className="content">
               <div id={this.state.success ? 'success': this.state.error ? 'error':''}>
-                  {this.state.success ? "You can't proceed futher" :this.state.error ? "Sorry , You can't proceed futher your age is less than 13 years" :' '}
+                  {this.state.success ? "You can proceed futher" :this.state.error ? "Sorry , You can't proceed futher your age is less than 13 years" :' '}
               </div>
               <h4 style={{textAlign:"left"}}>Date of Birth</h4>
               <div className="dob">
